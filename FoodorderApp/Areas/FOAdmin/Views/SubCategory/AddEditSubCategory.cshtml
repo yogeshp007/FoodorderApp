@@ -1,0 +1,113 @@
+﻿@using FoodorderApp.Areas.FOAdmin.Models;
+@{
+    ViewBag.Title = "AddEditSubCategory";
+    Layout = "~/Areas/FOAdmin/Views/Shared/alayout.cshtml";
+}
+
+
+<h3>Manage Sub Category</h3>
+<hr />
+
+@{if (ViewBag.status == 1)
+    {
+        <div class="panel-body">
+            <div class="alert alert-info" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Success! </strong> @ViewBag.msg
+            </div>
+        </div>
+    }
+    if (ViewBag.status == 0)
+    {
+        <div class="panel-body">
+            <div class="alert alert-info" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Error! </strong> @ViewBag.msg
+            </div>
+        </div>
+    }
+}
+<div class="xs">
+    <div class="col-md-4 email-list1">
+        <div class="collection">
+            @using (Html.BeginForm("AddEditSubCategory", "SubCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <label>Select Category : </label>
+                @Html.DropDownList("drpCategory", ViewBag.drpCategory as SelectList, "Select Category", new { @class = "form-control1 control3" })
+                <label>Enter Sub Category Name : </label>
+                <input type="text" id="txtscatname" name="scname" class="form-control1 control3" />
+                <label>Description :  </label>
+                <textarea rows="6" id="txtsdesc" name="sdesc" class="form-control1 control2"></textarea>
+                <label>Category Photo :  </label>
+                <input type="file" name="subcatimg" id="scatimg" class="form-control1 control3" />
+                <hr />
+                <input type="submit" name="btn" id="btnSave" value="Add SubCategory" class="btn btn-warning btn-warng1" />
+                <input type="reset" id="btnCancel" value="Cancel" class="btn btn-default btn-warng1" />
+            }
+        </div>
+    </div>
+    <div class="col-md-8 inbox_right">
+        <div class="Compose-Message">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    List of Category
+                </div>
+                <table class="table table-condensed" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                SubCategory Name
+                            </th>
+                            <th>
+                                Category
+                            </th>
+                            <th>Description</th>
+                            <th>
+                                Photo
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (SubCategoryModel item in ViewBag.subcats as List<SubCategoryModel>)
+                        {
+                            <tr>
+                                <td>
+                                    @item.subcatid
+                                </td>
+                                <td>
+                                    @item.subname
+                                </td>
+                                <td>
+                                    <span class="label label-info label-sm">@item.category.catname</span>
+                                </td>
+                                <td>
+                                    @item.subdesc
+                                </td>
+                                <td>
+                                    <img src="/Areas/FOAdmin/images/SubCategoryImages/@item.subcatimg" alt="No Image Found" width="100" height="100" />
+                                </td>
+                                <td>
+                                    @item.isactive
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Select", "AddEditSubCategory", new {id=item.subcatid })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

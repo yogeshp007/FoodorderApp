@@ -1,0 +1,150 @@
+﻿@using FoodorderApp.EF;
+@{
+    ViewBag.Title = "food";
+    Layout = "~/Areas/MyUsers/Views/Shared/ulayout.cshtml";
+}
+<script src="~/Areas/MyUsers/js/jquery-3.2.1.min.js"></script>
+<script src="~/Areas/MyUsers/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $('#lnkAdd').click(function () {
+            $('#lblAmount').text($('.lblprice').text());
+            $('#price').val($('.lblprice').text());
+            $('#uquan').val('1');
+            $('#foodname').text($('.fname').text());
+        });
+
+
+        $('#uquan').keyup(function () {
+
+            var quan = $(this).val();
+            if (quan=='') {
+                $(this).val('1');
+            }
+            else
+            {
+                var price = parseInt($('#price').val());
+                quan = parseInt($(this).val());
+                $('#lblAmount').text(price * quan);
+            }
+        });
+
+        $('#btnOrder').click(function () {
+            var uname = $('#uname').val();
+            var add = $('#oadd').val();
+            var mob = $('#umob').val();
+            var amnt = $('#lblAmount').text();
+            var quan = $('#uquan').val();
+
+            $.ajax({
+                url: '/MyUsers/Home/AddFood/',
+                type: 'post',
+                data: { uname: uname, address: add, contactno: mob, amnt: amnt, quant: quan },
+                dataType: 'json',
+                success: function (data) {
+                    alert(data);
+                    $('.close').click();
+                },
+                error: function (s) {
+                    alert('try again' + s.responseText);
+                   // $('.close').click();
+                }
+
+
+            });
+        });
+    });
+</script>
+<h3>Our Menu</h3>
+<h4>
+    Welcome toour food store
+</h4>
+
+<div class="about-grids">
+    <div class="about-grids-top">
+        @foreach (tblFood item in ViewBag.foodlist as List<tblFood>)
+        {
+            <div class="col-md-6 about-grids-left">
+                <div class="col-md-6 about-grid">
+                    <a href="/MyUsers/Home/food/@item.foodid"><img src="/Areas/FOAdmin/images/FoodImages/@item.foodimg" alt="No Image Found" width="200" height="200" /></a>
+                </div>
+                <div class="col-md-6 about-grid about-grid-info">
+                    <div class="price">
+                        <span>&#8377</span><label class="lblprice">@item.price</label>
+                    </div>
+                    <h4 class="fname">@item.food</h4>
+                    <p>@item.fooddesc</p>
+                    <p>
+                        <a id="lnkAdd" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Order Now</a>
+                    </p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        }
+
+
+        <div class="clearfix"> </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">
+                            Order Now :<strong> <span id="foodname"></span></strong>
+                        </h4>
+                        <b style="font-size:18px;">  <span>&#8377</span>&nbsp; <span id="lblAmount">0.</span></b>
+
+                    </div>
+                    <div class="modal-body">
+                        @*<div class="alert alert-info" role="alert" runat="server" id="divAlert" visible="false">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                                <asp:Label Text="" ID="lblmsg" runat="server" />
+
+                            </div>*@
+                        <div style="width: 80%; height: auto; padding: 5px;">
+                            <div class="form-group">
+                                <label for="lbl1">Name of User</label>
+                                <input type="text" id="uname" value="" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="lbl2">Address of order Delivery</label>
+                                <textarea id="oadd" value="" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="lbl3">Mobile Number</label>
+                                <input type="number" id="umob" value="" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="lbl3">Price</label>
+                                <input type="number" readonly="readonly" id="price" value="" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label for="lbl3">Enter Quantity</label>
+                                <input type="number" id="uquan" value="" class="form-control" />
+                            </div>
+                            <hr />
+                            <input type="button" id="btnOrder" value="Add Order" class="btn btn-warning btn-lg" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+

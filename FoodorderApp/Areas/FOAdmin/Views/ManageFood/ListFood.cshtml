@@ -1,0 +1,87 @@
+﻿@using FoodorderApp.Areas.FOAdmin.Models;
+@{
+    ViewBag.Title = "ListFood";
+    Layout = "~/Areas/FOAdmin/Views/Shared/alayout.cshtml";
+}
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
+<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tbl').DataTable();
+    });
+</script>
+<h3>List of Food</h3>
+<hr />
+<div class="xs">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="tbl">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Food Name
+                            </th>
+                            <th>
+                                Category
+                            </th>
+                            <th>
+                                Sub Category
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Photo
+                            </th>
+                            <th>
+                                Food Avialability
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (FoodModel item in ViewBag.foodlist as List<FoodModel>)
+                        {
+                            <tr>
+                                <td>
+                                    @item.foodid
+                                </td>
+                                <td>
+                                   @item.food
+                                </td>
+                                <td>
+                                    <span class="label label-info">@item.category.catname</span>
+                                </td>
+                                <td>
+                                    <span class="label label-info">@item.subcategory.subname</span>
+                                </td>
+                                <td>
+                                    @item.price
+                                </td>
+                                <td>
+                                    @item.fooddesc
+                                </td>
+                                <td>
+                                    <img src="/Areas/FOAdmin/images/FoodImages/@item.foodimg" alt="No Image Found" width="100" height="100" />
+                                </td>
+                                <td>
+                                    @item.foodstatus
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- bootstrap -->
+    <link href="~/Areas/MyUsers/css/bootstrap.css" rel='stylesheet' type='text/css' media="all" />
+    <!-- //bootstrap -->
+    <!-- Custom Theme files -->
+    <link href="~/Areas/MyUsers/css/style.css" rel='stylesheet' type='text/css' media="all" />
+    <script src="~/Areas/MyUsers/js/jquery-1.8.3.min.js"></script>
+    <script src="~/Areas/MyUsers/js/modernizr.custom.js"></script>
+    <!--start-smoth-scrolling-->
+    <!--webfonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Niconne' rel='stylesheet' type='text/css'>
+    <!--webfonts-->
+    <link href="~/Areas/MyUsers/css/component.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="cbp-spmenu-push">
+    <!--header-->
+    <div class="header-section2">
+        <div class="container">
+            <div class="header-top">
+                <div class="top-nav">
+                    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s2">
+                        <h3>Menu</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="menu">Menu</li>
+                            <ul class="cl-effect-1">
+                                <li><a href="menu.html">Menu1</a></li>
+                                <li><a href="menu.html">Menu2</a></li>
+                                <li><a href="menu.html">Menu3</a></li>
+                                <li><a href="menu.html">Menu4</a></li>
+                            </ul>
+                            <!-- script-for-menu -->
+                            <script>
+									   $( "li.menu" ).click(function() {
+										 $( "ul.cl-effect-1" ).slideToggle( 300, function() {
+										 // Animation complete.
+										  });
+										 });
+                            </script>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="mail.html">Mail Us</a></li>
+                        </ul>
+                    </nav>
+                    <div class="main buttonset">
+                        <!-- Class "cbp-spmenu-open" gets applied to menu and "cbp-spmenu-push-toleft" or "cbp-spmenu-push-toright" to the body -->
+                        <button id="showRightPush"><img src="~/Areas/MyUsers/images/menu.png" alt="" /></button>
+                        <!--<span class="menu"></span>-->
+                    </div>
+              
+                    <script src="~/Areas/MyUsers/js/classie.js"></script>
+                    <script>
+						var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+						showRightPush = document.getElementById( 'showRightPush' ),
+						body = document.body;
+
+						showRightPush.onclick = function() {
+							classie.toggle( this, 'active' );
+							classie.toggle( body, 'cbp-spmenu-push-toleft' );
+							classie.toggle( menuRight, 'cbp-spmenu-open' );
+							disableOther( 'showRightPush' );
+						};
+
+						function disableOther( button ) {
+							if( button !== 'showRightPush' ) {
+								classie.toggle( showRightPush, 'disabled' );
+							}
+						}
+                    </script>
+                </div>
+                <div class="header-logo">
+                    <a href="index.html"><img src="~/Areas/MyUsers/images/logo.png" alt="" /></a>
+                </div>
+                <div class="search-form">
+                    <form>
+                        <input type="text" value="Search..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search...';}" required="">
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!--/header-->
+    <div class="about-main">
+        <div class="container">
+            <div>
+                @RenderBody()
+            </div>
+           
+        </div>
+    </div>
+   
+    <!--/start-footer-->
+    <!--/start-footer-->
+    <div class="footer-section">
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-md-3 footer-grid bottom-nav">
+                    <h3>Information </h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="menu.html">menu</a></li>
+                        <li><a href="Gallery.html">Gallery</a></li>
+                        <li><a href="mail.html">Mail Us</a></li>
+                        <div class="clearfix"> </div>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid category">
+                    <h3>Categories </h3>
+                    <ul>
+                        <li><a href="#">Proin at tellus quis</a> </li>
+                        <li><a href="#">Felis tincidun</a>  </li>
+                        <li><a href="#">Vestibulum</a> </li>
+                        <li><a href="#">Sets</a> </li>
+                        <li><a href="#">Praesent sit</a> </li>
+                        <li><a href="#">Amet nulla molestie</a> </li>
+
+                        <div class="clearfix"> </div>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid brands">
+                    <h3>Menu </h3>
+                    <ul>
+                        <li><a href="#">Pellentesque</a>  </li>
+                        <li><a href="#">Lorem ipsum dolor </a> </li>
+                        <li><a href="#">Vestibulum pharetra</a> </li>
+                        <li><a href="#">Donec eros dolor</li>
+                        <div class="clearfix"> </a> </div>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-grid contact-list">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Tel:1(234) 567-8901</li>
+                        <li>Tel:1(234) 567-8936</li>
+                        <div class="clearfix"> </div>
+                    </ul>
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!--//End-foote-->
+    <div class="copy-right-section">
+        <div class="container">
+            <div class="col-md-6 copy-right">
+                <p>Design by Yogesh</p>
+            </div>
+            <div class="col-md-6 social-icons">
+                <ul class="soc_icons2">
+                    <li><a href="#"><i class="icon_4"></i></a></li>
+                    <li><a href="#"><i class="icon_5"></i></a></li>
+                    <li><a href="#"><i class="icon_6"></i></a></li>
+                    <div class="clearfix"> </div>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>

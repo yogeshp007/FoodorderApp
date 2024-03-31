@@ -1,0 +1,33 @@
+﻿@using FoodorderApp.EF;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/MyUsers/Views/Shared/ulayout.cshtml";
+}
+
+<h3>Our Menu</h3>
+<h4>
+    Welcome toour food store
+</h4>
+
+<div class="about-grids">
+    <div class="about-grids-top">
+        @foreach (tblFoodCategory item in ViewBag.cats as List<tblFoodCategory>)
+        {
+            <div class="col-md-6 about-grids-left">
+                <div class="col-md-6 about-grid">
+                    <a href="/MyUsers/Home/SubCats/@item.catid"><img src="/Areas/FOAdmin/images/CategoryImages/@item.catimg" alt="No Image Found" width="200" height="200" /></a> 
+                </div>
+                <div class="col-md-6 about-grid about-grid-info">
+                   
+                    <h4>@item.catname</h4>
+                    <p>@item.catdesc</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        }
+        
+        
+        <div class="clearfix"> </div>
+    </div>
+   
+</div>

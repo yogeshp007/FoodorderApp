@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FoodOrderDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblFood">
+          <Key>
+            <PropertyRef Name="foodid" />
+          </Key>
+          <Property Name="foodid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="food" Type="varchar" MaxLength="50" />
+          <Property Name="fooddesc" Type="varchar" MaxLength="250" />
+          <Property Name="catid" Type="int" />
+          <Property Name="subcatid" Type="int" />
+          <Property Name="foodimg" Type="varchar" MaxLength="150" />
+          <Property Name="price" Type="int" />
+          <Property Name="foodstatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblFoodCategory">
+          <Key>
+            <PropertyRef Name="catid" />
+          </Key>
+          <Property Name="catid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="catname" Type="varchar" MaxLength="50" />
+          <Property Name="catdesc" Type="varchar" MaxLength="250" />
+          <Property Name="catimg" Type="varchar" MaxLength="100" />
+          <Property Name="isactive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblFoodSubCat">
+          <Key>
+            <PropertyRef Name="subcatid" />
+          </Key>
+          <Property Name="subcatid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subname" Type="varchar" MaxLength="50" />
+          <Property Name="subdesc" Type="varchar" MaxLength="250" />
+          <Property Name="subcatimg" Type="varchar" MaxLength="150" />
+          <Property Name="catid" Type="int" />
+          <Property Name="isactive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblOrders">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uname" Type="varchar" MaxLength="50" />
+          <Property Name="uaddress" Type="varchar" MaxLength="100" />
+          <Property Name="ucontact" Type="varchar" MaxLength="20" />
+          <Property Name="amnt" Type="varchar" MaxLength="10" />
+          <Property Name="qnty" Type="int" />
+          <Property Name="orderstatus" Type="bit" />
+        </EntityType>
+        <Function Name="AddEditCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="catid" Type="int" Mode="In" />
+          <Parameter Name="catname" Type="varchar" Mode="In" />
+          <Parameter Name="cdesc" Type="varchar" Mode="In" />
+          <Parameter Name="catimg" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddEditfood" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="foodid" Type="int" Mode="In" />
+          <Parameter Name="food" Type="varchar" Mode="In" />
+          <Parameter Name="fooddesc" Type="varchar" Mode="In" />
+          <Parameter Name="catid" Type="int" Mode="In" />
+          <Parameter Name="subcatid" Type="int" Mode="In" />
+          <Parameter Name="foodimg" Type="varchar" Mode="In" />
+          <Parameter Name="price" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddeditSubcat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="subcatid" Type="int" Mode="In" />
+          <Parameter Name="sname" Type="varchar" Mode="In" />
+          <Parameter Name="sdesc" Type="varchar" Mode="In" />
+          <Parameter Name="simage" Type="varchar" Mode="In" />
+          <Parameter Name="cid" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="FoodOrderDBModelStoreContainer">
+          <EntitySet Name="tblFood" EntityType="Self.tblFood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFoodCategory" EntityType="Self.tblFoodCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFoodSubCat" EntityType="Self.tblFoodSubCat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrders" EntityType="Self.tblOrders" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FoodOrderDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblFood">
+          <Key>
+            <PropertyRef Name="foodid" />
+          </Key>
+          <Property Name="foodid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="food" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fooddesc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="catid" Type="Int32" />
+          <Property Name="subcatid" Type="Int32" />
+          <Property Name="foodimg" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="foodstatus" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblFoodCategory">
+          <Key>
+            <PropertyRef Name="catid" />
+          </Key>
+          <Property Name="catid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="catname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="catdesc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="catimg" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="isactive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblFoodSubCat">
+          <Key>
+            <PropertyRef Name="subcatid" />
+          </Key>
+          <Property Name="subcatid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="subdesc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="subcatimg" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="catid" Type="Int32" />
+          <Property Name="isactive" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="FoodOrderDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblFoods" EntityType="Self.tblFood" />
+          <EntitySet Name="tblFoodCategories" EntityType="Self.tblFoodCategory" />
+          <EntitySet Name="tblFoodSubCats" EntityType="Self.tblFoodSubCat" />
+          <FunctionImport Name="AddEditCategory">
+            <Parameter Name="catid" Mode="In" Type="Int32" />
+            <Parameter Name="catname" Mode="In" Type="String" />
+            <Parameter Name="cdesc" Mode="In" Type="String" />
+            <Parameter Name="catimg" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddEditfood">
+            <Parameter Name="foodid" Mode="In" Type="Int32" />
+            <Parameter Name="food" Mode="In" Type="String" />
+            <Parameter Name="fooddesc" Mode="In" Type="String" />
+            <Parameter Name="catid" Mode="In" Type="Int32" />
+            <Parameter Name="subcatid" Mode="In" Type="Int32" />
+            <Parameter Name="foodimg" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddeditSubcat">
+            <Parameter Name="subcatid" Mode="In" Type="Int32" />
+            <Parameter Name="sname" Mode="In" Type="String" />
+            <Parameter Name="sdesc" Mode="In" Type="String" />
+            <Parameter Name="simage" Mode="In" Type="String" />
+            <Parameter Name="cid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tblOrders" EntityType="FoodOrderDBModel.tblOrder" />
+        </EntityContainer>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uaddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ucontact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="amnt" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="qnty" Type="Int32" />
+          <Property Name="orderstatus" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FoodOrderDBModelStoreContainer" CdmEntityContainer="FoodOrderDBEntities">
+          <EntitySetMapping Name="tblFoods">
+            <EntityTypeMapping TypeName="FoodOrderDBModel.tblFood">
+              <MappingFragment StoreEntitySet="tblFood">
+                <ScalarProperty Name="foodid" ColumnName="foodid" />
+                <ScalarProperty Name="food" ColumnName="food" />
+                <ScalarProperty Name="fooddesc" ColumnName="fooddesc" />
+                <ScalarProperty Name="catid" ColumnName="catid" />
+                <ScalarProperty Name="subcatid" ColumnName="subcatid" />
+                <ScalarProperty Name="foodimg" ColumnName="foodimg" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="foodstatus" ColumnName="foodstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFoodCategories">
+            <EntityTypeMapping TypeName="FoodOrderDBModel.tblFoodCategory">
+              <MappingFragment StoreEntitySet="tblFoodCategory">
+                <ScalarProperty Name="catid" ColumnName="catid" />
+                <ScalarProperty Name="catname" ColumnName="catname" />
+                <ScalarProperty Name="catdesc" ColumnName="catdesc" />
+                <ScalarProperty Name="catimg" ColumnName="catimg" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFoodSubCats">
+            <EntityTypeMapping TypeName="FoodOrderDBModel.tblFoodSubCat">
+              <MappingFragment StoreEntitySet="tblFoodSubCat">
+                <ScalarProperty Name="subcatid" ColumnName="subcatid" />
+                <ScalarProperty Name="subname" ColumnName="subname" />
+                <ScalarProperty Name="subdesc" ColumnName="subdesc" />
+                <ScalarProperty Name="subcatimg" ColumnName="subcatimg" />
+                <ScalarProperty Name="catid" ColumnName="catid" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddEditCategory" FunctionName="FoodOrderDBModel.Store.AddEditCategory" />
+          <FunctionImportMapping FunctionImportName="AddEditfood" FunctionName="FoodOrderDBModel.Store.AddEditfood" />
+          <FunctionImportMapping FunctionImportName="AddeditSubcat" FunctionName="FoodOrderDBModel.Store.AddeditSubcat" />
+          <EntitySetMapping Name="tblOrders">
+            <EntityTypeMapping TypeName="FoodOrderDBModel.tblOrder">
+              <MappingFragment StoreEntitySet="tblOrders">
+                <ScalarProperty Name="orderstatus" ColumnName="orderstatus" />
+                <ScalarProperty Name="qnty" ColumnName="qnty" />
+                <ScalarProperty Name="amnt" ColumnName="amnt" />
+                <ScalarProperty Name="ucontact" ColumnName="ucontact" />
+                <ScalarProperty Name="uaddress" ColumnName="uaddress" />
+                <ScalarProperty Name="uname" ColumnName="uname" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

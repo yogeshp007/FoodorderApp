@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Areas/FOAdmin/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="~/Areas/FOAdmin/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="~/Areas/FOAdmin/css/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="~/Areas/FOAdmin/js/jquery.min.js"></script>
+    <!----webfonts--->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <!---//webfonts--->
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Modern</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="/foadmin"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="/foadmin/ManageCategory/AddEditCategory"><i class="fa fa-flask nav_icon"></i>Manage Category</a>
+                        </li>
+                        <li>
+                            <a href="/foadmin/SubCategory/AddEditSubCategory"><i class="fa fa-flask nav_icon"></i>Manage SubCategory</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-indent nav_icon"></i>Manage Food<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="graphs.html">Add New Food</a>
+                                </li>
+                                <li>
+                                    <a href="typography.html">View All Food</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+        <div id="page-wrapper">
+            <div class="graphs">
+             
+                    @RenderBody()
+                
+                <div class="copy_layout">
+                    <p>Copyright © 2017 Yogesh </p>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- Nav CSS -->
+    <link href="~/Areas/FOAdmin/css/custom.css" rel="stylesheet">
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/Areas/FOAdmin/js/metisMenu.min.js"></script>
+    <script src="~/Areas/FOAdmin/js/custom.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Areas/FOAdmin/js/bootstrap.min.js"></script>
+
+</body>
+</html>

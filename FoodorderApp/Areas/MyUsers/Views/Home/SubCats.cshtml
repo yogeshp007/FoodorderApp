@@ -1,0 +1,34 @@
+﻿@using FoodorderApp.EF;
+@{
+    ViewBag.Title = "SubCats";
+    Layout = "~/Areas/MyUsers/Views/Shared/ulayout.cshtml";
+}
+
+<h3>Our Menu</h3>
+<h4>
+    Welcome toour food store
+</h4>
+
+<div class="about-grids">
+    <div class="about-grids-top">
+        @foreach (tblFoodSubCat item in ViewBag.subcats as List<tblFoodSubCat>)
+        {
+            <div class="col-md-6 about-grids-left">
+                <div class="col-md-6 about-grid">
+                    <a href="/MyUsers/Home/foods/@item.subcatid"><img src="/Areas/FOAdmin/images/SubCategoryImages/@item.subcatimg" alt="No Image Found" width="200" height="200" /></a>
+                </div>
+                <div class="col-md-6 about-grid about-grid-info">
+
+                    <h4>@item.subname</h4>
+                    <p>@item.subdesc</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        }
+
+
+        <div class="clearfix"> </div>
+    </div>
+
+</div>
+
